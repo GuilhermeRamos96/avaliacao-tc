@@ -14,13 +14,16 @@ def avaliar_fratura():
     
     if st.button("Calcular Resultado"):
         positivos = sum(criterios.values())
-        recomendacao = "✅ Tomografia Recomendada" if positivos > 0 else "❌ Tomografia NÃO Recomendada"
+        recomendacao = "✅ Tomografia Recomendada
+        Referências: Stewart(2020), Carvalho et al(2019)" 
+        if positivos > 0 else "❌ Nenhuma indicação clara de TC
+         Referências: Stewart(2020), Carvalho et al(2019)"
         
         st.markdown(f"**📊 Critérios preenchidos:** {positivos}/5")
         st.markdown(f"**🔍 {recomendacao}**")
 
 def avaliar_infeccao():
-    st.subheader("Avaliação de Infecção Odontogênica - Weyh et al (2019), Christensen et al (2018), Saggese (2019)")
+    st.subheader("Avaliação de Infecção Odontogênica")
     
     with st.expander("Critérios de Alto Risco"):
         alto_risco = {
@@ -48,11 +51,14 @@ def avaliar_infeccao():
 
     if st.button("Calcular Resultado"):
         if any(alto_risco.values()):
-            resultado = "🔥 Tomografia FORTE recomendada: Critérios de alto risco presentes."
+            resultado = "🔥 Tomografia recomendada: Critérios de alto risco presentes.
+            Referências: Weyh et al (2019), Christensen et al (2018), Saggese (2019) "
         elif sum(moderado_risco.values()) > 1:
-            resultado = "⚠️ Considerar Tomografia: Dois ou mais critérios de risco moderado presentes."
+            resultado = "⚠️ Considerar Tomografia: Dois ou mais critérios de risco moderado presentes.
+            Referências:Weyh et al (2019), Christensen et al (2018), Saggese (2019)"
         else:
-            resultado = "✅ Nenhuma indicação clara de TC. Monitorar evolução."
+            resultado = "✅ Nenhuma indicação clara de TC. Monitorar evolução.
+            Referências:Weyh et al (2019), Christensen et al (2018), Saggese (2019)"
         
         st.markdown(f"**🔍 {resultado}**")
 
