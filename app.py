@@ -16,11 +16,13 @@ def avaliar_fratura():
         positivos = sum(criterios.values())
         if positivos > 0:
             recomendacao = """✅ Tomografia Recomendada  
+            
             **Referências:**  
             1- STEWART, Christopher N. et al. Validation of the “Wisconsin Criteria” for Obtaining Dedicated Facial Imaging and Its Financial Impact at a Level 1 Trauma Center. Craniomaxillofacial Trauma & Reconstruction, v. 13, n. 1, p. 4-8, mar. 2020. http://dx.doi.org/10.1177/1943387520910020.  
             2- HARRINGTON, Amanda W. et al. External Validation of University of Wisconsin's Clinical Criteria for Obtaining Maxillofacial Computed Tomography in Trauma. Journal Of Craniofacial Surgery, v. 29, n. 2, p. 1-4, mar. 2018. http://dx.doi.org/10.1097/scs.0000000000004240."""
         else:
             recomendacao = """❌ Nenhuma indicação clara de TC  
+            
             **Referências:**  
             1- STEWART, Christopher N. et al. Validation of the “Wisconsin Criteria” for Obtaining Dedicated Facial Imaging and Its Financial Impact at a Level 1 Trauma Center. Craniomaxillofacial Trauma & Reconstruction, v. 13, n. 1, p. 4-8, mar. 2020. http://dx.doi.org/10.1177/1943387520910020.  
             2- HARRINGTON, Amanda W. et al. External Validation of University of Wisconsin's Clinical Criteria for Obtaining Maxillofacial Computed Tomography in Trauma. Journal Of Craniofacial Surgery, v. 29, n. 2, p. 1-4, mar. 2018. http://dx.doi.org/10.1097/scs.0000000000004240."""
@@ -59,22 +61,29 @@ def avaliar_infeccao():
     if st.button("Calcular Resultado"):
         if any(alto_risco.values()):
             resultado = """🔥 Tomografia recomendada: Critérios de alto risco presentes.  
+            
             **Referências:**  
             1- WEYH, Ashleigh et al. Overutilization of Computed Tomography for Odontogenic Infections. Journal Of Oral And Maxillofacial Surgery, v. 77, n. 3, p. 528-535, mar. 2019. http://dx.doi.org/10.1016/j.joms.2018.10.025.  
             2- CHRISTENSEN, Brian J. et al. Evidence-Based Clinical Criteria for Computed Tomography Imaging in Odontogenic Infections. Journal Of Oral And Maxillofacial Surgery, v. 77, n. 2, p. 299-306, fev. 2019. http://dx.doi.org/10.1016/j.joms.2018.09.022."""
         elif sum(moderado_risco.values()) > 1:
             resultado = """⚠️ Considerar Tomografia: Dois ou mais critérios de risco moderado presentes.  
+            
             **Referências:**  
             1- WEYH, Ashleigh et al. Overutilization of Computed Tomography for Odontogenic Infections. Journal Of Oral And Maxillofacial Surgery, v. 77, n. 3, p. 528-535, mar. 2019. http://dx.doi.org/10.1016/j.joms.2018.10.025.  
             2- CHRISTENSEN, Brian J. et al. Evidence-Based Clinical Criteria for Computed Tomography Imaging in Odontogenic Infections. Journal Of Oral And Maxillofacial Surgery, v. 77, n. 2, p. 299-306, fev. 2019. http://dx.doi.org/10.1016/j.joms.2018.09.022."""
         else:
-            resultado = "✅ Nenhuma indicação clara de TC. Monitorar evolução."
+            resultado = """✅ Nenhuma indicação clara de TC. Monitorar evolução.
+            
+            **Referências:**  
+            1- WEYH, Ashleigh et al. Overutilization of Computed Tomography for Odontogenic Infections. Journal Of Oral And Maxillofacial Surgery, v. 77, n. 3, p. 528-535, mar. 2019. http://dx.doi.org/10.1016/j.joms.2018.10.025.  
+            2- CHRISTENSEN, Brian J. et al. Evidence-Based Clinical Criteria for Computed Tomography Imaging in Odontogenic Infections. Journal Of Oral And Maxillofacial Surgery, v. 77, n. 2, p. 299-306, fev. 2019. http://dx.doi.org/10.1016/j.joms.2018.09.022."""
         
         st.markdown(f"**🔍 {resultado}**")
 
 # Interface Streamlit
-st.title("🏥 Avaliação de Tomografia")
-st.write("Escolha a avaliação desejada:")
+st.title("🏥 **Avaliação da Necessidade de Tomografia**")
+st.write("💡 *A decisão final deve ser do especialista.*")
+st.write("👨‍⚕️ **Escolha a avaliação desejada:**")
 
 opcao = st.radio("", ["Fratura Facial", "Infecção Odontogênica"])
 
